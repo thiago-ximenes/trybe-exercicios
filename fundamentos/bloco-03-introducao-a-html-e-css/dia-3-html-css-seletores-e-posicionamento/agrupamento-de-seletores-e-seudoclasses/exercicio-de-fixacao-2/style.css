@@ -1,0 +1,28 @@
+div {
+    border: 1px solid 
+}
+
+div:nth-of-type(1) {
+    color: lime;
+}
+
+div:nth-of-type(2) {
+    color: red;
+}
+
+div:nth-of-type(3) {
+    color: blue;
+    font-size: 50px;
+}
+
+div:nth-of-type(4) {
+    color: yellow;
+}
+
+div:nth-of-type(5) {
+    color: tomato;
+}
+
+div:nth-of-type(2n+1) {
+    font-style: italic;
+}
