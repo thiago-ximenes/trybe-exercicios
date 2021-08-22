@@ -1,0 +1,52 @@
+ol li:nth-of-type(2n+1) {
+    background-color: yellow;
+    text-transform: uppercase;
+    color: black;
+}
+
+ol li:nth-of-type(2n) {
+    background-color: green;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    color: red;
+}
+
+:is(h1, h2, h3, h4, h5, h6) em {
+    font-size: 40px;
+    border: 1px solid white;
+}
+
+li {
+    font-size: 20px;
+}
+
+li em{
+    font-weight: 700;
+}
+
+.programing-languages li:nth-of-type(-n+3) {
+    color: blue;
+}
+
+ul a:hover {
+    font-weight: bold;
+}
+
+ul li:nth-of-type(1) a:hover {
+    color: orange;
+}
+
+ul li:nth-of-type(2) a:hover, li:nth-of-type(5) a:hover {
+    color: green;
+}
+
+ul li:nth-child(3) a:hover {
+    color: black;
+}
+
+ul li:nth-of-type(4) a:hover {
+    color: yellow;
+}
+
+
