@@ -31,4 +31,44 @@ for (item of numbers) {
 
 console.log(bigger);
 
-odd
+let odd = 0;
+
+for (item of numbers) {
+  if (item % 2 == 1) {
+    odd++;
+  }
+}
+if ((odd = 0)) {
+  console.log("Nenhum valor ímpar encontrado: " + odd);
+} else {
+  console.log("Quantidade de números ímpares: " + odd);
+}
+
+let smaller = numbers[1];
+
+for (item of numbers) {
+  if (item < smaller) {
+    smaller = item;
+  }
+}
+
+console.log(smaller);
+
+let array = [];
+
+for (let index = 1; index <= 25; index += 1) {
+  array.push(index);
+}
+
+console.log(array);
+
+for (let item of array) {
+  console.log(item / 2);
+}
+
+sortedNumbers = numbers.sort(function(a, b){return a - b});
+console.log(sortedNumbers);
+
+for (let index of numbers) {
+  for ()
+}
