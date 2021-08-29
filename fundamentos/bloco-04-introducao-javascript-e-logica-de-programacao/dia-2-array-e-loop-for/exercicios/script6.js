@@ -69,6 +69,29 @@ for (let item of array) {
 sortedNumbers = numbers.sort(function(a, b){return a - b});
 console.log(sortedNumbers);
 
-for (let index of numbers) {
-  for ()
+
+let anything = [7,2,14,5]
+
+for (let index = 1; index < anything.length; index += 1) {
+  for (let secondIndex = 0; secondIndex < anything.length; secondIndex += 1) {
+    if (anything[index] < anything[secondIndex]) {
+      let position = anything[index];
+      anything[index] = anything[secondIndex];
+      anything[secondIndex] = position;
+    }
+  }
 }
+console.log(anything)
+
+let something = [7,2,14,5]
+
+for (let index = 1; index < something.length; index += 1) {
+  for (let secondIndex = 0; secondIndex < something.length; secondIndex += 1) {
+    if (something[index] > something[secondIndex]) {
+      let position = something[index]
+      something[index] = something[secondIndex];
+      something[secondIndex] = position;
+    }
+  }
+}
+console.log(something)
