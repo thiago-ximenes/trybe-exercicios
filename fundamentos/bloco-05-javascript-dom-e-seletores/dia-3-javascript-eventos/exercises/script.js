@@ -33,7 +33,6 @@ function createDays() {
     const day = dezDaysList[index];
     const dayListItem = document.createElement("li");
     dayListItem.innerHTML = day;
-
     days.appendChild(dayListItem);
   }
 }
