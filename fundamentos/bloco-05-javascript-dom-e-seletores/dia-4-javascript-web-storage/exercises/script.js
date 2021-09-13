@@ -4,25 +4,26 @@ let bodyElement = document.body;
 let bgColor = document.getElementById("bg-color")
 let textColor = document.getElementById("text-color")
 let fontSize = document.getElementById("font-size")
+const lineHeight = document.getElementById("line-height");
+
+lineHeight.addEventListener('change', (event) => {
+  bodyElement.style['lineHeight'] = `${event.target.value}px`;
+  localStorage.setItem("line-height", bodyElement.style["lineHeight"]);
+})
 
 
 function verifyStyle(cssStyle, key) {
   // o valor de key deve ser passado como uma string na chamada da função
   if (localStorage.getItem(key) !== undefined) {
-    bodyElement.style.cssStyle = localStorage.getItem(key)
+    bodyElement.style[cssStyle] = localStorage.getItem(key)
   }
 }
 
 verifyStyle('backgroundColor', 'bg-color')
-// if (localStorage.getItem("bg-color") !== undefined) {
-//   bodyElement.style.backgroundColor = localStorage.getItem("bg-color")
-// }
-if (localStorage.getItem("text-color") !== undefined) {
-  bodyElement.style.color = localStorage.getItem("text-color");
-}
-if (localStorage.getItem("text-color") !== undefined) {
-  bodyElement.style.color = localStorage.getItem("text-color");
-}
+verifyStyle('color', 'text-color')
+verifyStyle("fontSize", "font-size");
+verifyStyle('lineHeight', 'line-height');
+
 // espero pelo usuário, para colocar o valor no input
 bgColor.addEventListener('change', changeBgColor)
 textColor.addEventListener('change', changeTextColor)
@@ -41,6 +42,7 @@ function changeTextColor(event) {
 }
 
 function changeFontSize(event) {
-  bodyElement.style.fontSize = event.target.value;
+  bodyElement.style.fontSize = `${event.target.value}px`;
   localStorage.setItem("font-size", bodyElement.style.fontSize);
 }
+
