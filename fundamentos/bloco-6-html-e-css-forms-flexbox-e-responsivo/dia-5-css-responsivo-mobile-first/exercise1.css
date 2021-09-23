@@ -1,0 +1,36 @@
+body {
+  margin: 20px auto;
+  text-align: center ;
+  font-size: 18px;
+  margin: 20px ;
+}
+h1 {
+  font-size: 16px;
+}
+h2 {
+}
+
+img {
+  border-radius: 10px;
+  max-width: 100%;
+  margin: 10px auto;
+}
+
+figure {
+  margin: 0;
+}
+
+@media screen and (min-width: 1015px) {
+  body {
+    text-align: center;
+    background-color: #c5dccc;
+    font-size: 36px;
+  }
+  .catContainer {
+    margin: 20px auto;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    max-width: 1200px;
+  }
+}
