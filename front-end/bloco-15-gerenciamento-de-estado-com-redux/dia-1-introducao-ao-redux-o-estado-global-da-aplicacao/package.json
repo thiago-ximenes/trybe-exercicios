@@ -1,0 +1,9 @@
+{
+  "name": "dia-1-introducao-ao-redux-o-estado-global-da-aplicacao",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "redux": "^4.1.2"
+  }
+}
