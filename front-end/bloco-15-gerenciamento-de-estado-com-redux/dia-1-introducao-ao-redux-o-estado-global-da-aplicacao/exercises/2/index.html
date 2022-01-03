@@ -40,17 +40,86 @@
 
     const meuPrimeiroReducer = (state = ESTADO_INICIAL_1, action) => {
       switch (action.type) {
-        default:
-          return state;
+        case 'CHANGE_NAME_1':
+          return {
+            ...state,
+            nome: action.name
+          }
+          case 'CHANGE_LAST_NAME_1':
+            return {
+              ...state,
+              sobrenome: action.lastName
+            }
+            default:
+              return state;
       }
     };
 
     const meuSegundoReducer = (state = ESTADO_INICIAL_2, action) => {
       switch (action.type) {
-        default:
-          return state;
+        case 'CHANGE_NAME_2':
+          return {
+            ...state,
+            nome: action.name
+          }
+          case 'CHANGE_LAST_NAME_2':
+            return {
+              ...state,
+              sobrenome: action.lastName
+            }
+            default:
+              return state;
       }
     };
+
+    const reducersCombined = Redux.combineReducers({
+      meuPrimeiroReducer,
+      meuSegundoReducer,
+    });
+
+    const store = Redux.createStore(reducersCombined);
+
+    const changeName1 = (name) => ({
+      type: 'CHANGE_NAME_1',
+      name,
+    })
+
+
+    const changeLastName1 = (lastName) => ({
+      type: 'CHANGE_LAST_NAME_1',
+      lastName,
+    })
+
+    function changeName2(name) {
+      return ({
+        type: 'CHANGE_NAME_2',
+        name,
+      })
+    }
+
+    function changeLastName2(lastName) {
+      return ({
+        type: 'CHANGE_LAST_NAME_2',
+        lastName,
+      })
+    }
+
+    window.onload = () => {
+      setTimeout(() => {
+        store.dispatch(changeName1('Rafael'));
+        store.dispatch(changeLastName1('Blois'));
+        store.dispatch(changeName2('Thiago'));
+        store.dispatch(changeLastName2('Ximenes'));
+      }, 3000);
+    };
+
+    store.subscribe(() => {
+      const state = store.getState();
+      document.getElementById('nome-1').innerText = state.meuPrimeiroReducer.nome;
+      document.getElementById('sobrenome-1').innerText = state.meuPrimeiroReducer.sobrenome;
+      document.getElementById('nome-2').innerText = state.meuSegundoReducer.nome;
+      document.getElementById('sobrenome-2').innerText = state.meuSegundoReducer.sobrenome;
+    });
   </script>
 </body>
 
