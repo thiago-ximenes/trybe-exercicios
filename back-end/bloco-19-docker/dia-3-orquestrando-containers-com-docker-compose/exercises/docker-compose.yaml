@@ -1,0 +1,9 @@
+version: "3.8"
+services:
+  apache:
+    build:
+      context: ./
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    ports:
+      - 4545:80
