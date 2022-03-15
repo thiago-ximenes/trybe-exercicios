@@ -15,17 +15,19 @@ function promise(a, b ,c) {
   })
 };
 
-async function main() {
+async function main(a, b, c) {
   try {
-    const result = await promise("a", 2, 1);
-    console.log(result);
+    const result = await promise(a, b, c);
+    return result;
   } catch (err) {
-    console.error(err);
+    return err;
   }
 }
-
-main();
 
 // promise(49, 2, 1)
 // .then((result) => console.log(result))
 // .catch((err) => console.log(err));
+
+module.exports = {
+  main,
+}
