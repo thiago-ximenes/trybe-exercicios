@@ -21,9 +21,35 @@ app.get('/recipes', (req, res) => {
   res.json(sortRecipes);
 });
 
+app.get('/recipes/search', (req, res) => {
+  const { name, maxPrice } = req.query;
+  const  filteredRecipes = recipes.filter(
+    (recipe) => recipe.name.toLowerCase().includes(name.toLowerCase())
+    && recipe.price <= maxPrice);
+  res.status(200).json(filteredRecipes);
+})
+
+app.get('/recipes/:id', (req, res) => {
+  const { id } = req.params;
+  const recipe = recipes.find((r) => r.id === parseInt(id));
+
+  if (!recipe) return res.status(404).json({ message: 'Recipe not found!'});
+
+  res.status(200).json(recipe);
+});
+
 app.get('/drinks', (req, res) => {
   const sortDrinks = drinks.sort((a, b) => a.name.localeCompare(b.name));
   return res.json(sortDrinks);
+})
+
+app.get('/drinks/:id', (req, res) => {
+  const { id } = req.params;
+  const drinkById = drinks.find((drink) => drink.id === parseInt(id));
+
+  if (!drinkById) return res.status(404).json({ message: 'Drink not found!'});
+  
+  return res.status(200).json(drinkById);
 })
 
 app.listen(3001, () => {
