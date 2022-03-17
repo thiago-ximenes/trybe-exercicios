@@ -1,4 +1,5 @@
 const express = require('express');
+const res = require('express/lib/response');
 const app = express();
 
 const recipes = [
@@ -22,10 +23,10 @@ app.get('/recipes', (req, res) => {
 });
 
 app.get('/recipes/search', (req, res) => {
-  const { name, maxPrice } = req.query;
+  const { name, maxPrice, minPrice } = req.query;
   const  filteredRecipes = recipes.filter(
     (recipe) => recipe.name.toLowerCase().includes(name.toLowerCase())
-    && recipe.price <= maxPrice);
+    && recipe.price < maxPrice && recipe.price >= minPrice);
   res.status(200).json(filteredRecipes);
 })
 
@@ -41,6 +42,13 @@ app.get('/recipes/:id', (req, res) => {
 app.get('/drinks', (req, res) => {
   const sortDrinks = drinks.sort((a, b) => a.name.localeCompare(b.name));
   return res.json(sortDrinks);
+})
+
+app.get('/drinks/search', (req, res) => {
+  const { name } = req.query;
+  const filteredDrinks = drinks
+    .filter((drink) => drink.name.toLowerCase().includes(name.toLowerCase()));
+  return res.status(200).json(filteredDrinks);
 })
 
 app.get('/drinks/:id', (req, res) => {
