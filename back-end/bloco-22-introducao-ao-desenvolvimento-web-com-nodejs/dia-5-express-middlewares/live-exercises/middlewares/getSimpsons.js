@@ -1,12 +1,7 @@
-const fs = require('fs').promises;
+const getSimpsonsFromJson = require('../services/getSimpsonsFromJson');
 
 async function getSimpsons(req, res) {
-  const simpsons = await fs.readFile('simpsons.json', 'utf8', (err, data) => {
-    if (err) {
-      throw err;
-    }
-    return JSON.parse(data);
-  });
+  const simpsons = await getSimpsonsFromJson();
   return res.status(200).json(JSON.parse(simpsons));
 }
 
