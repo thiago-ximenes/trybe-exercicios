@@ -5,7 +5,7 @@ async function getSimpsonsFromJson() {
       if (err) {
         throw err;
       }
-      return data.json();
+      return data;
     });
 }
 
