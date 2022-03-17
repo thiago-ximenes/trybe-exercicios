@@ -1,6 +1,8 @@
 const express = require('express');
-const res = require('express/lib/response');
+const bodyParser = require('body-parser');
+
 const app = express();
+app.use(bodyParser.json());
 
 const recipes = [
   { id: 1, name: 'Lasanha', price: 40.0, waitTime: 30 },
@@ -59,6 +61,19 @@ app.get('/drinks/:id', (req, res) => {
   
   return res.status(200).json(drinkById);
 })
+
+app.get('/validateToken', (req, res) => {
+  const token = req.headers.authorization;
+  if (token.length !== 16) return res.status(401).json({message: 'Invalid Token!'});
+
+  res.status(200).json({message: 'Valid Token!'})
+});
+
+app.post('/recipes', (req, res) => {
+  const { id, name, price } = req.body;
+  recipes.push({ id, name, price });
+  return res.status(201).json({ message: 'Recipe created successfully!'});
+});
 
 app.listen(3001, () => {
   console.log('Aplicação ouvindo na porta 3001');
